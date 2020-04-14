@@ -1,0 +1,34 @@
+﻿@*https://stackoverflow.com/questions/59137973/how-to-set-the-focus-to-an-inputtext-element
+Check Second Answer*@
+
+@using Sol_Demo.Extensions
+@inject IJSRuntime JSRuntime
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="txtTest">Test TextBox</label>
+                <input id="txtTest" @ref="txtTest" type="text" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-primary" @onclick="OnSetFocus">Set Focus</button>
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    public ElementReference txtTest { get; set; }
+
+    private async Task OnSetFocus()
+    {
+        await txtTest.SetFocusAsync(JSRuntime);
+    }
+
+}
